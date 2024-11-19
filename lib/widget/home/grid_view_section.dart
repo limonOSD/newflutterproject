@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../util/grid_button.dart';
+import 'package:newflutterproject/utilities/grid_button.dart';
 
 class Gridviewbuttonsection extends StatelessWidget {
   const Gridviewbuttonsection({
