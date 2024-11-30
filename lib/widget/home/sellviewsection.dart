@@ -55,17 +55,17 @@ class SellviewSection extends StatelessWidget {
               ),
             ],
           ),
-          Column(
+        const   Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  const Icon(Icons.calendar_today_outlined,
+                  Icon(Icons.calendar_today_outlined,
                       color: Colors.blueAccent),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         "৳ 4,010",
                         style: TextStyle(
@@ -84,14 +84,38 @@ class SellviewSection extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              SizedBox(height: 16),
               Row(
                 children: [
-                  const Icon(Icons.percent, color: Colors.greenAccent),
-                  const SizedBox(width: 8),
+                  Icon(Icons.percent, color: Colors.greenAccent),
+                  SizedBox(width: 8),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         "৳ 1,424",
                         style: TextStyle(

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newflutterproject/home_screen.dart';
-import 'package:newflutterproject/retailers_screen.dart';
+import 'package:newflutterproject/screen/cart_screen.dart';
+import 'package:newflutterproject/screen/product_add_screen.dart';
+
+import 'package:newflutterproject/theme.dart';
 
 class NewFlutterproject extends StatelessWidget {
   const NewFlutterproject({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      home: RetailersScreen(),
+    return GetMaterialApp(
+      home: const CartScreen(),
+      theme: lightThemeData,
     );
   }
 }
