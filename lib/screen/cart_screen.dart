@@ -17,7 +17,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 35.0, left: 15, right: 1),
+        padding: const EdgeInsets.only(top: 35.0, left: 1, right: 1),
         child: Column(
           children: [
             const AppbarSection(text: 'আমার ব্যাগ'),
@@ -26,7 +26,10 @@ class _CartScreenState extends State<CartScreen> {
               child: ListView.separated(
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return const ProdutCardDetails();
+                  return const Padding(
+                    padding: EdgeInsets.only(top: 8, left: 12),
+                    child: ProdutCardDetails(),
+                  );
                 },
                 separatorBuilder: (context, _) {
                   return Padding(
@@ -40,7 +43,97 @@ class _CartScreenState extends State<CartScreen> {
                 itemCount: 50,
               ),
             ),
+            const SubtotalPriceSection()
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class SubtotalPriceSection extends StatelessWidget {
+  const SubtotalPriceSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border(
+            top: BorderSide(color: Colors.grey.shade300, width: 2.0),
+            bottom: BorderSide(
+              color: Colors.grey.shade300,
+            )),
+      ),
+      child: const Padding(
+        padding: EdgeInsets.all(12.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'O/C',
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey),
+                ),
+                Text(
+                  'সাবটোটাল:',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Text(
+                  '-60',
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xffFB5A3D)),
+                ),
+                Text(
+                  'Tk 250',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+            CustomElevetedButton()
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomElevetedButton extends StatelessWidget {
+  const CustomElevetedButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 150,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xffFB2C65),
+        ),
+        onPressed: () {},
+        child: const Text(
+          'চেক আউট',
+          style: TextStyle(
+              fontSize: 15, fontWeight: FontWeight.w600, color: Colors.white),
         ),
       ),
     );
@@ -74,7 +167,7 @@ class ProdutCardDetails extends StatelessWidget {
         ),
         Container(
           height: Get.height / 5,
-          width: Get.width / 1.7,
+          width: Get.width / 1.6,
           decoration: const BoxDecoration(
             color: Colors.white,
           ),
@@ -265,3 +358,50 @@ class CustomQuantityBox extends StatelessWidget {
     );
   }
 }
+
+// Container totalPriceAndCheckcoutSection() {
+//   return Container(
+//     padding: const EdgeInsets.all(16),
+//     decoration: const BoxDecoration(
+//         color: Colors.white,
+//         borderRadius: BorderRadius.only(
+//             topLeft: Radius.circular(16), topRight: Radius.circular(16))),
+//     child: Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//       children: [
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             const Text(
+//               'Total Price',
+//               style: TextStyle(
+//                 fontSize: 15,
+//                 fontWeight: FontWeight.w600,
+//                 color: Colors.black45,
+//               ),
+//             ),
+//             Obx(
+//               () => Text(
+//                 '৳100',
+//                 style: const TextStyle(
+//                   fontSize: 18,
+//                   fontWeight: FontWeight.w600,
+//                   color: Colors.white,
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//         SizedBox(
+//           width: 180,
+//           child: ElevatedButton(
+//             onPressed: () {
+//               // Get.to(() => const CheckoutScreen());
+//             },
+//             child: const Text('Check out'),
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }

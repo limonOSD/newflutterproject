@@ -87,7 +87,7 @@ class ProfileUserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       height: 80,
       width: 450,
       decoration: BoxDecoration(
