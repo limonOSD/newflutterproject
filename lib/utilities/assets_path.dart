@@ -14,4 +14,5 @@ class AssetsPath {
   static const bestsellingImg = '$imagePath/bestsellingImg.png';
   static const soyabeanoilImg = '$imagePath/pusti.png';
   static const powdermilkImg = '$imagePath/image.png';
+  static const doneImg = '$imagePath/doneImg.png';
 }

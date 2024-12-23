@@ -69,12 +69,12 @@ class SubtotalPriceSection extends StatelessWidget {
               color: Colors.grey.shade300,
             )),
       ),
-      child: const Padding(
-        padding: EdgeInsets.all(12.0),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -93,7 +93,7 @@ class SubtotalPriceSection extends StatelessWidget {
                 )
               ],
             ),
-            Column(
+            const Column(
               children: [
                 Text(
                   '-60',
@@ -108,7 +108,11 @@ class SubtotalPriceSection extends StatelessWidget {
                 ),
               ],
             ),
-            CustomElevetedButton()
+            CustomElevetedButton(
+              width: 150,
+              text: 'চেক আউট',
+              onTap: () {},
+            )
           ],
         ),
       ),
@@ -117,22 +121,33 @@ class SubtotalPriceSection extends StatelessWidget {
 }
 
 class CustomElevetedButton extends StatelessWidget {
+  final double? width;
+  final double? hight;
+  final VoidCallback onTap;
+  final String text;
   const CustomElevetedButton({
     super.key,
+    this.width,
+    this.hight,
+    required this.onTap,
+    required this.text,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
+      height: hight,
+      width: width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xffFB2C65),
         ),
-        onPressed: () {},
-        child: const Text(
-          'চেক আউট',
-          style: TextStyle(
+        onPressed: () {
+          onTap;
+        },
+        child: Text(
+          text,
+          style: const TextStyle(
               fontSize: 15, fontWeight: FontWeight.w600, color: Colors.white),
         ),
       ),
@@ -358,50 +373,3 @@ class CustomQuantityBox extends StatelessWidget {
     );
   }
 }
-
-// Container totalPriceAndCheckcoutSection() {
-//   return Container(
-//     padding: const EdgeInsets.all(16),
-//     decoration: const BoxDecoration(
-//         color: Colors.white,
-//         borderRadius: BorderRadius.only(
-//             topLeft: Radius.circular(16), topRight: Radius.circular(16))),
-//     child: Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//       children: [
-//         Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             const Text(
-//               'Total Price',
-//               style: TextStyle(
-//                 fontSize: 15,
-//                 fontWeight: FontWeight.w600,
-//                 color: Colors.black45,
-//               ),
-//             ),
-//             Obx(
-//               () => Text(
-//                 '৳100',
-//                 style: const TextStyle(
-//                   fontSize: 18,
-//                   fontWeight: FontWeight.w600,
-//                   color: Colors.white,
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//         SizedBox(
-//           width: 180,
-//           child: ElevatedButton(
-//             onPressed: () {
-//               // Get.to(() => const CheckoutScreen());
-//             },
-//             child: const Text('Check out'),
-//           ),
-//         ),
-//       ],
-//     ),
-//   );
-// }
