@@ -15,4 +15,7 @@ class AssetsPath {
   static const soyabeanoilImg = '$imagePath/pusti.png';
   static const powdermilkImg = '$imagePath/image.png';
   static const doneImg = '$imagePath/doneImg.png';
+  static const downloadImg = '$imagePath/downloadImg.png';
+  static const calenderImg = '$imagePath/calender.png';
+  static const pdfDownloderImg = '$imagePath/pdfdownloader.png';
 }

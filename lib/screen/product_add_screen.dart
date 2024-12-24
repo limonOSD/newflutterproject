@@ -25,6 +25,7 @@ class ProductAddScreen extends StatelessWidget {
                     children: [
                       const AppbarSection(
                         text: 'পণ্য যোগ করুন',
+                        icon: Icons.search,
                       ),
                       const SizedBox(
                         height: 8,
@@ -46,7 +47,6 @@ class ProductAddScreen extends StatelessWidget {
                               imagePath: AssetsPath.candyImg,
                               categoryName: 'ক্যান্ডি',
                             );
-                            ;
                           },
                         ),
                       )
@@ -178,12 +178,14 @@ class ProfileUserCard extends StatelessWidget {
 }
 
 class AppbarSection extends StatelessWidget {
+  final IconData icon;
   final String text;
   final VoidCallback? onTap;
   const AppbarSection({
     super.key,
     required this.text,
     this.onTap,
+    required this.icon,
   });
 
   @override
@@ -205,8 +207,8 @@ class AppbarSection extends StatelessWidget {
           onPressed: () {
             onTap;
           },
-          icon: const Icon(
-            Icons.search,
+          icon: Icon(
+            icon,
             size: 28,
           ),
         ),

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:newflutterproject/screen/product_add_screen.dart';
 import 'package:newflutterproject/utilities/assets_path.dart';
@@ -20,7 +18,10 @@ class _CartScreenState extends State<CartScreen> {
         padding: const EdgeInsets.only(top: 35.0, left: 1, right: 1),
         child: Column(
           children: [
-            const AppbarSection(text: 'আমার ব্যাগ'),
+            const AppbarSection(
+              text: 'আমার ব্যাগ',
+              icon: Icons.search,
+            ),
             const ProfileUserCard(),
             Expanded(
               child: ListView.separated(
@@ -52,8 +53,24 @@ class _CartScreenState extends State<CartScreen> {
 }
 
 class SubtotalPriceSection extends StatelessWidget {
+  final String? text;
+
+  final String? oc;
+
+  final TextStyle? textStyle;
+
+  final TextStyle? tktextStyle;
+  final String? pdf;
+  final String? pdfImg;
+
   const SubtotalPriceSection({
     super.key,
+    this.text,
+    this.oc,
+    this.textStyle,
+    this.tktextStyle,
+    this.pdf,
+    this.pdfImg,
   });
 
   @override
@@ -74,17 +91,18 @@ class SubtotalPriceSection extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'O/C',
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.grey),
+                  oc ?? 'O/C',
+                  style: textStyle ??
+                      const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey),
                 ),
-                Text(
+                const Text(
                   'সাবটোটাল:',
                   style: TextStyle(
                       fontSize: 15,
@@ -93,25 +111,30 @@ class SubtotalPriceSection extends StatelessWidget {
                 )
               ],
             ),
-            const Column(
+            Column(
               children: [
                 Text(
-                  '-60',
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xffFB5A3D)),
+                  text ?? '-60',
+                  style: tktextStyle ??
+                      const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xffFB5A3D)),
                 ),
-                Text(
+                const Text(
                   'Tk 250',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                 ),
               ],
             ),
+            const SizedBox(
+              height: 10,
+            ),
             CustomElevetedButton(
               width: 150,
-              text: 'চেক আউট',
+              text: pdf ?? 'চেক আউট',
               onTap: () {},
+              img: pdfImg ?? null,
             )
           ],
         ),
@@ -125,12 +148,14 @@ class CustomElevetedButton extends StatelessWidget {
   final double? hight;
   final VoidCallback onTap;
   final String text;
+  final String? img;
   const CustomElevetedButton({
     super.key,
     this.width,
     this.hight,
     required this.onTap,
     required this.text,
+    this.img,
   });
 
   @override
@@ -145,10 +170,29 @@ class CustomElevetedButton extends StatelessWidget {
         onPressed: () {
           onTap;
         },
-        child: Text(
-          text,
-          style: const TextStyle(
-              fontSize: 15, fontWeight: FontWeight.w600, color: Colors.white),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              text,
+              style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            if (img != null)
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Image.asset(
+                  img!,
+                  height: 24,
+                  width: 24,
+                ),
+              ),
+          ],
         ),
       ),
     );
