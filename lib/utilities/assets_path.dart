@@ -18,4 +18,5 @@ class AssetsPath {
   static const downloadImg = '$imagePath/downloadImg.png';
   static const calenderImg = '$imagePath/calender.png';
   static const pdfDownloderImg = '$imagePath/pdfdownloader.png';
+  static const locatonImg = '$imagePath/location.png';
 }
