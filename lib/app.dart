@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newflutterproject/screen/order_history_screen.dart';
+import 'package:newflutterproject/screen/product_inventory_screen.dart';
 
 import 'package:newflutterproject/theme.dart';
 
@@ -10,7 +10,7 @@ class NewFlutterproject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: OrderHistoryScreen(),
+      home: const ProductInventoryScreen(),
       theme: lightThemeData,
     );
   }

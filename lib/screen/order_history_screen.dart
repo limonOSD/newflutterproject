@@ -96,66 +96,7 @@ class OrderHistoryScreen extends StatelessWidget {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, orderIndex) {
-                          final order = market.orders[orderIndex];
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Container(
-                              height: 70,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: const Color(0xffFFFFFF),
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(15),
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color:
-                                        Colors.grey.shade700.withOpacity(0.2),
-                                    spreadRadius: 0,
-                                    blurRadius: 2,
-                                    offset: const Offset(0, 1),
-                                  ),
-                                ],
-                              ),
-                              child: ListTile(
-                                contentPadding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                leading: Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color: Colors.grey.shade400,
-                                    ),
-                                  ),
-                                  child: Image.asset(AssetsPath.orderaddImg),
-                                ),
-                                title: Text(
-                                  order.name,
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: Color(0xff21212F)),
-                                ),
-                                subtitle: Text(
-                                  order.customer,
-                                  style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xff676E79)),
-                                ),
-                                trailing: Text(
-                                  'Tk ${order.amount}',
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xff008230)),
-                                ),
-                              ),
-                            ),
-                          );
+                          return const CustomerOrderTitle();
                         },
                       ),
                     ],
@@ -165,45 +106,6 @@ class OrderHistoryScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Padding dateInfobox() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Container(
-        height: 55,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(25),
-          ),
-          color: const Color(0xffFFFFFF),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
-                spreadRadius: 1,
-                blurRadius: 5,
-                offset: const Offset(0, 1))
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                '12 Novemver 2024',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-              ),
-              Image.asset(
-                AssetsPath.calenderImg,
-                color: const Color(0xff21212F),
-              )
-            ],
-          ),
-        ),
       ),
     );
   }
@@ -254,6 +156,73 @@ class OrderHistoryScreen extends StatelessWidget {
   }
 }
 
+class CustomerOrderTitle extends StatelessWidget {
+  const CustomerOrderTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Container(
+        height: 70,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: const Color(0xffFFFFFF),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(15),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade700.withOpacity(0.2),
+              spreadRadius: 0,
+              blurRadius: 2,
+              offset: const Offset(0, 1),
+            ),
+          ],
+        ),
+        child: ListTile(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+          leading: Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: Colors.grey.shade400,
+              ),
+            ),
+            child: Image.asset(AssetsPath.orderaddImg),
+          ),
+          title: const Text(
+            'Rashel Ahmed',
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff21212F)),
+          ),
+          subtitle: const Text(
+            'CustomerName',
+            style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: Color(0xff676E79)),
+          ),
+          trailing: const Text(
+            'Tk 400',
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Color(0xff008230)),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class Market {
   final String title;
   final int retailers;
@@ -269,4 +238,36 @@ class OrderDetail {
 
   OrderDetail(
       {required this.name, required this.customer, required this.amount});
+}
+
+Padding dateInfobox() {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 15),
+    child: Container(
+      height: 55,
+      width: double.infinity,
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(25),
+          ),
+          color: const Color(0xffFFFFFF),
+          border: Border.all(color: Colors.grey.shade300)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              '12 Novemver 2024',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ),
+            Image.asset(
+              AssetsPath.calenderImg,
+              color: const Color(0xff21212F),
+            )
+          ],
+        ),
+      ),
+    ),
+  );
 }

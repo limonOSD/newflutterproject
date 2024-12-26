@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:newflutterproject/screen/cart_screen.dart';
 import 'package:newflutterproject/utilities/assets_path.dart';
@@ -12,7 +14,9 @@ class ProductSummaryScreen extends StatelessWidget {
         padding: const EdgeInsets.only(top: 50, left: 12, right: 12),
         child: Column(
           children: [
-            pageHeader(),
+            PageHeader(
+              text: 'পণ্য সারাংশ',
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -52,8 +56,14 @@ class ProductSummaryScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  Row pageHeader() {
+class PageHeader extends StatelessWidget {
+  String? text;
+  PageHeader({super.key, this.text});
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -61,9 +71,9 @@ class ProductSummaryScreen extends StatelessWidget {
           Icons.arrow_back_ios,
           color: Color(0xff21212F),
         ),
-        const Text(
-          'পণ্য সারাংশ',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+        Text(
+          text!,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
         ),
         Image.asset(
           AssetsPath.downloadImg,
