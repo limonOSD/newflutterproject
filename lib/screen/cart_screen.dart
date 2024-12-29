@@ -377,7 +377,7 @@ class CustomQuantityBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: Get.height / 27,
-      width: Get.width / 5,
+      width: Get.width / 6,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.grey.shade300,

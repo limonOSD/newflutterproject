@@ -259,7 +259,10 @@ Padding dateInfobox() {
           children: [
             const Text(
               '12 Novemver 2024',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black),
             ),
             Image.asset(
               AssetsPath.calenderImg,
